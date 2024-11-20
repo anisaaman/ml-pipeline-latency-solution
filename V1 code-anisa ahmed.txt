@@ -1,0 +1,35 @@
+// Diagram elements
+Data Ingestion [icon: database] {
+  Redpanda Cluster [icon: kafka] {
+    Broker 1 [icon: server]
+    Broker 2 [icon: server]
+    Broker 3 [icon: server]
+  }
+}
+
+ML Processing [icon: brain] {
+  SageMaker [icon: aws-sagemaker] {
+    Training Instance [icon: aws-ec2]
+    Inference Instance [icon: aws-ec2]
+  }
+}
+
+Monitoring [icon: activity] {
+  Latency Monitor [icon: clock]
+  Alert System [icon: bell]
+}
+
+Optimization Tools [icon: tool] {
+  Load Balancer [icon: aws-elb]
+  Auto-scaling Group [icon: aws-ec2-auto-scaling]
+  Cache Layer [icon: aws-elasticache]
+}
+
+// Connections
+Redpanda Cluster > SageMaker: data stream
+SageMaker > Latency Monitor: monitor performance
+Latency Monitor > Alert System: trigger alerts
+Redpanda Cluster > Load Balancer: distribute load
+Load Balancer > Auto-scaling Group: scale resources
+SageMaker < Auto-scaling Group: optimize processing
+SageMaker < Cache Layer: reduce latency
