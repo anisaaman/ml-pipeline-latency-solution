@@ -1,0 +1,58 @@
+// Diagram elements
+Data Ingestion [icon: database] {
+  Redpanda Cluster [icon: kafka] {
+    Broker 1 [icon: server]
+    Broker 2 [icon: server]
+    Broker 3 [icon: server]
+    Broker 4 [icon:server]
+    Broker 5 [icon:server]
+    Broker 6 [icon:server]
+  }
+  Data Preprocessor [icon:filter]
+}
+
+ML Processing [icon: brain] {
+  SageMaker [icon: aws-sagemaker] {
+    Training Instance [icon: aws-ec2]
+    Inference Instance [icon: aws-ec2]
+  }
+}
+
+Monitoring [icon: activity] {
+  Latency Monitor [icon: clock]
+  Alert System [icon: bell]
+}
+
+Optimization Tools [icon: tool] {
+  Load Balancer [icon: aws-elb]
+  Auto-scaling Group [icon: aws-ec2-auto-scaling]
+  Cache Layer [icon: aws-elasticache]
+  Kafka MirrorMaker [icon:kafka]
+  Stream Processor [icon:aws-lambda]
+  Monitoring Dashboard [icon:monitor]
+  Alert System 2 [icon:bell]
+  Load Balancer 2 [icon:aws-elb]
+  Auto-scaling Group 2 [icon:aws-ec2-auto-scaling]
+  Cache Layer 2 [icon:aws-elasticache]
+}
+
+// Connections
+Redpanda Cluster > SageMaker: data stream
+SageMaker > Latency Monitor: monitor performance
+Latency Monitor > Alert System: trigger alerts
+Redpanda Cluster > Load Balancer: distribute load
+Load Balancer > Auto-scaling Group: scale resources
+SageMaker < Auto-scaling Group: optimize processing
+SageMaker < Cache Layer: reduce latency
+Data Preprocessor > Redpanda Cluster: preprocess data
+Redpanda Cluster > Kafka MirrorMaker: replicate data
+Kafka MirrorMaker > SageMaker: data stream
+Redpanda Cluster > Stream Processor: process stream
+Stream Processor > SageMaker: processed data
+Latency Monitor > Monitoring Dashboard: display metrics
+Latency Monitor > Alert System 2: trigger alerts
+Redpanda Cluster > Load Balancer 2: distribute load
+Load Balancer 2 > Auto-scaling Group: scale resources
+Load Balancer 2 > Auto-scaling Group 2: scale resources
+Auto-scaling Group 2 > SageMaker: optimize processing
+SageMaker < Cache Layer 2: reduce latency
